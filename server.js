@@ -69,6 +69,15 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error });
   }
 });
+const path = require("path");
+
+// Serve static files from React build folder
+app.use(express.static(path.join(__dirname, "client", "dist"))); // adjust "client" if needed
+
+// Fallback for React Router (SPA routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
