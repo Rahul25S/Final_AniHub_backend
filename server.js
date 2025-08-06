@@ -72,7 +72,7 @@ app.post("/api/login", async (req, res) => {
 const path = require("path");
 
 // Serve static files from React build folder
-app.use(express.static(path.join(__dirname, "client", "dist"))); // adjust "client" if needed
+app.use(express.static(path.join(__dirname, "client", "dist"))); // adjust "client" if need
 
 // Fallback for React Router (SPA routing)
 app.get("*", (req, res) => {
